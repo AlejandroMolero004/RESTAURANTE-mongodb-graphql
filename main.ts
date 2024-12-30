@@ -6,7 +6,7 @@ import {ApolloServer} from "@apollo/server"
 import {startStandaloneServer} from "npm:@apollo/server@4.1/standalone";
 const MONGO_URL=Deno.env.get("MONGO_URL")
 if(!MONGO_URL){
-  Deno.exit(0)
+  throw new Error("Mongo URL not found");
 }
 const client= new MongoClient(MONGO_URL)
 await client.connect()
